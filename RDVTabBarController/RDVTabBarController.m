@@ -210,6 +210,8 @@
         
         [[weakSelf tabBar] setFrame:CGRectMake(0, tabBarStartingY, viewSize.width, tabBarHeight)];
         [[weakSelf contentView] setFrame:CGRectMake(0, 0, viewSize.width, contentViewHeight)];
+        [weakSelf.view layoutIfNeeded];
+        
     };
     
     void (^completion)(BOOL) = ^(BOOL finished){
@@ -219,6 +221,7 @@
     };
     
     if (animated) {
+        [self.view setNeedsUpdateConstraints];
         [UIView animateWithDuration:0.24 animations:block completion:completion];
     } else {
         block();
