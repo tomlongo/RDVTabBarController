@@ -95,6 +95,10 @@
 
 #pragma mark - Methods
 
+-(CGFloat)toolBarHeight {
+    return 49;
+}
+
 - (UIViewController *)selectedViewController {
     return [[self viewControllers] objectAtIndex:[self selectedIndex]];
 }
@@ -197,7 +201,7 @@
         CGFloat tabBarHeight = CGRectGetHeight([[weakSelf tabBar] frame]);
         
         if (!tabBarHeight) {
-            tabBarHeight = 49;
+            tabBarHeight = [self toolBarHeight];
         }
         
         if (!hidden) {
